@@ -1,40 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <el-button type="primary">element的按钮</el-button>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div>这下面是我用来预览pdf文件的</div>
+    <pdf :pdfUrl="pdfUrl"></pdf>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
-import { mapState, mapMutations, mapActions } from 'vuex';
+import pdf from './pdf.vue';
 
 export default {
   name: 'HomeView',
-  computed: {
-    ...mapState('user', {
-      username: 'username'
-    })
+  components:{
+    pdf
   },
-  created() {
-    console.log(this.username);
-    console.log(this.$store.state.user.username);
-    this.setName('李四');
-    this.generateRoutes();
-    this.$store.dispatch('permission/generateRoutes');
+  data() {
+    return {
+      pdfUrl:'http://localhost:8080/怎么删除wps中最后的空白页.pdf'
+    }
   },
-  methods: {
-    ...mapMutations('user', {
-      setName: 'setName'
-    }),
-    ...mapActions('permission', {
-      generateRoutes: 'generateRoutes'
-    })
+  created(){
+    
   },
-  components: {
-    HelloWorld
-  }
 };
 </script>
